@@ -12,3 +12,5 @@ Install under \*ALL
 Download: https://bitbucket.org/SilicaAndPina/freepsm/downloads/FreePSM.suprx
 
 Only works with PSM Runtime 2.01 . . . (if u have older please share)   
+
+Note: This is ONLY for PSM (PlayStation Mobile) games NOT for Native Vita Games.    
