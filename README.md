@@ -1,8 +1,12 @@
-# FreePSM
+# FreePSM   
+   
+Debug PSM InAppPurchases,     
+    
+Allows you to obtain PSM InAppPurchases offline . .   
+forever.. :3   
+   
+Useful for games that have the full game locked behinds an IAP    
 
-Debug PSM InAppPurchases, 
+Install under \*ALL
 
-Allows you to obtain PSM InAppPurchases offline . .
-forever.. :3
-
-Useful for games that have the full game locked behinds an IAP
+Download: https://bitbucket.org/SilicaAndPina/freepsm/downloads/FreePSM.suprx
