@@ -14,14 +14,7 @@ char titleid[12];
 
 int SceLibPsmAimMgrIsDex_p()
 {
-	int ret = TAI_CONTINUE(int, SceLibPsmAimMgrIsDexHook_ref,);
-	
-	if(ret > -1)
-	{
-			return 1;
-	}
-	sceClibPrintf("[FreePSM] ERROR: SceLibPsmAimMgrIsDex returned %x",ret);
-	return ret;
+	return 1;
 }
 
 SceUID sceKernelLoadStartModule_p(char *path, SceSize args, void *argp, int flags, SceKernelLMOption *option, int *status)
@@ -31,16 +24,45 @@ SceUID sceKernelLoadStartModule_p(char *path, SceSize args, void *argp, int flag
 	SceUID ret;
 	ret = TAI_CONTINUE(SceUID, LoadModuleHook_ref, path, args, argp, flags, option, status);
 	
-	if(strstr(path,"libpsm.suprx"))
+	if(strstr(path,"libpsm.suprx")) //PSM
 	{
 		SceLibPsmAimMgrIsDexHook = taiHookFunctionOffset(&SceLibPsmAimMgrIsDexHook_ref, 
 									ret,
 									0,
-									0x450da, //2.01 Retail Runtime
+									0x450da, //SceLibPsmAimMgrIsDex
 									1, 
 									SceLibPsmAimMgrIsDex_p);
 		sceClibPrintf("[FreePSM] SceLibPsmAimMgrIsDexHook %x %x\n",SceLibPsmAimMgrIsDexHook,SceLibPsmAimMgrIsDexHook_ref);
 	}
+	
+	if(strstr(path,"libScePsmInAppPurchase.suprx")) //PSM Unity
+	{
+		tai_module_info_t tai_info;
+		tai_info.size = sizeof(tai_module_info_t);
+  	    taiGetModuleInfo("SceLibPsmInAppPurchase", &tai_info);
+
+		switch (tai_info.module_nid) {
+			case 0x1E9E7B88: //1.00 - 1.01 Unity Runtime
+				SceLibPsmAimMgrIsDexHook = taiHookFunctionOffset(&SceLibPsmAimMgrIsDexHook_ref, 
+											ret,
+											0,
+											0x3672, //SceLibPsmAimMgrIsDex
+											1, 
+											SceLibPsmAimMgrIsDex_p);
+				sceClibPrintf("[FreePSM] SceLibPsmAimMgrIsDexHook %x %x\n",SceLibPsmAimMgrIsDexHook,SceLibPsmAimMgrIsDexHook_ref);
+				break;
+			case 0x4E7A28FC: //1.02 Unity Runtime
+				SceLibPsmAimMgrIsDexHook = taiHookFunctionOffset(&SceLibPsmAimMgrIsDexHook_ref, 
+											ret,
+											0,
+											0x366a, //SceLibPsmAimMgrIsDex
+											1, 
+											SceLibPsmAimMgrIsDex_p);
+				sceClibPrintf("[FreePSM] SceLibPsmAimMgrIsDexHook %x %x\n",SceLibPsmAimMgrIsDexHook,SceLibPsmAimMgrIsDexHook_ref);
+				break;
+		}
+	}
+	
 	return ret;
 }
 
@@ -50,7 +72,7 @@ void _start() __attribute__ ((weak, alias ("module_start")));
 void module_start(SceSize argc, const void *args) {
 	sceAppMgrAppParamGetString(0, 12, titleid, 256);
 
-	if(!strcmp(titleid,"PCSI00011")) // PSM Runtime
+	if(!strcmp(titleid,"PCSI00011") || !strcmp(titleid,"PCSI00010")) // PSM Runtime & PSM Unity Runtime
 	{
 		sceClibPrintf("[FreePSM] Silca: I like to see girls die :3\n");
 		sceClibPrintf("[FreePSM] Loaded!\n");
