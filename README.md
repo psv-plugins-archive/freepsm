@@ -1,6 +1,6 @@
 # FreePSM   
    
-Debug PSM InAppPurchases,     
+Enables Debug PSM InAppPurchases in retail PSM Runtime    
     
 Allows you to obtain PSM InAppPurchases offline . .   
 forever.. :3   
