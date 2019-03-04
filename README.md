@@ -3,9 +3,11 @@
 # FreePSM v1.1:
 + Added support for PSM Unity Runtimes (1.00-1.02)    
 + Removed some unessoracy code   
+
 Download: https://bitbucket.org/SilicaAndPina/freepsm/downloads/FreePSM-v1.1.suprx
 
 # FreePSM v1.0: 
++ Inital Release
 Download: https://bitbucket.org/SilicaAndPina/freepsm/downloads/FreePSM.suprx
 
 # FreePSM   
