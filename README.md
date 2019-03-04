@@ -1,4 +1,4 @@
-# Releases
+# Releases:       
 
 # FreePSM v1.1:
 + Added support for PSM Unity Runtimes (1.00-1.02)    
@@ -11,7 +11,7 @@ Download: https://bitbucket.org/SilicaAndPina/freepsm/downloads/FreePSM-v1.1.sup
      
 Download: https://bitbucket.org/SilicaAndPina/freepsm/downloads/FreePSM.suprx
 
-# FreePSM   
+# About        
    
 Enables Debug PSM InAppPurchases in retail PSM Runtime    
     
