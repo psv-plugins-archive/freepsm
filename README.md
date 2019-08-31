@@ -28,9 +28,9 @@ BTW: if u have an older PSM Runtime please share! im looking for older verisons!
     
 Note: This is ONLY for PSM (PlayStation Mobile) games NOT for Native Vita Games.    
 
-Whenever an InAppPurchase command is called a message box will pop up;
-like "Get Ticket Information ?"  with 3 options:
-OK Cancel Error
-if you press OK, the IAP Handler will say the command completed successfully
-if you press CANCEL it'll say that it was cancled by the user
-if you press ERROR it'll say an error occured.
+Whenever an InAppPurchase command is called a message box will pop up:    
+like "Get Ticket Information ?"  with 3 options:     
+OK Cancel Error    
+if you press OK, the IAP Handler will say the command completed successfully    
+if you press CANCEL it'll say that it was cancled by the user   
+if you press ERROR it'll say an error occured.   
